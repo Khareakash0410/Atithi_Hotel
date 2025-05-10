@@ -14,9 +14,9 @@ type Props = {
     discount: number;
     specialNote: string;
     adults: number;
-    children: number;
+    noOfChildren: number;
     setAdults: Dispatch<SetStateAction<number>>;
-    setChildren: Dispatch<SetStateAction<number>>;
+    setNoOfChildren: Dispatch<SetStateAction<number>>;
     isBooked: boolean;
     handleBookNow: () => void;
   };
@@ -34,9 +34,9 @@ const BookRoomCta: FC<Props> = (props) => {
        setCheckoutDate,
        calcMinCheckoutDate,
        adults,
-       children,
+       noOfChildren,
        setAdults,
-       setChildren,
+       setNoOfChildren,
        isBooked,
        handleBookNow,
       } = props;
@@ -124,8 +124,8 @@ const BookRoomCta: FC<Props> = (props) => {
           <input 
             type="number" 
             id="children" 
-            value={children} 
-            onChange={e => setChildren(+e.target.value)} 
+            value={noOfChildren} 
+            onChange={e => setNoOfChildren(+e.target.value)} 
             min={0}
             max={3}
             className="w-full border border-gray-300 text-gray-900 rounded-lg p-2.5" 

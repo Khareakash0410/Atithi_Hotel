@@ -3,7 +3,7 @@ import { authOptions } from "@/libs/auth";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request, res: Response) {
+export async function GET() {
    const session = await getServerSession(authOptions);
 
 
@@ -20,13 +20,14 @@ export async function GET(req: Request, res: Response) {
 
     return NextResponse.json(data, {status: 200, statusText: "Successful"} );
    } catch (error) {
-    return new NextResponse("Uanble to fetch", {status: 400});
+      console.log(error);
+    return new NextResponse("Unable to fetch", {status: 400});
    }
 };
 
 
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
    const session = await getServerSession(authOptions);
 
    if(!session) {

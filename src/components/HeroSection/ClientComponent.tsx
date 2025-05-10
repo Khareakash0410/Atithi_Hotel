@@ -2,7 +2,6 @@
 
 import React, { FC } from "react";
 import CountUpNumber from "../CountUpNumber/CountUpNumber";
-import Image from "next/image";
 
 type Props = {
     heading1: React.ReactNode;

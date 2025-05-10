@@ -19,7 +19,7 @@ type RequestData = {
     children: number;
 }
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   const {
     hotelRoomSlug,
     checkinDate,
@@ -92,6 +92,7 @@ export async function POST(req: Request, res: Response) {
     });
 
   } catch (error: any) {
+    console.log('Payment falied', error);
     return new NextResponse(error, {status: 500}, );
   }
 };

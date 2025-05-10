@@ -25,7 +25,7 @@ const RoomDetails = (props: {params: {slug: string}}) => {
  const [checkinDate, setCheckinDate] = useState<Date | null>(null);
  const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
  const [adults, setAdults] = useState(1);
- const [children, setChildren] = useState(0);
+ const [noOfChildren, setNoOfChildren] = useState(0);
 
  const fetchRoom = async () => getroom(slug);
  
@@ -72,7 +72,7 @@ const RoomDetails = (props: {params: {slug: string}}) => {
                 checkoutDate,  
                 numberOfDays, 
                 adults, 
-                children,
+                children: noOfChildren,
             }
         );
 
@@ -87,6 +87,7 @@ const RoomDetails = (props: {params: {slug: string}}) => {
         }
     } catch (error) {
         toast.error("Error occured while payment");
+        console.log(error);
     }
   };
 
@@ -182,8 +183,8 @@ const RoomDetails = (props: {params: {slug: string}}) => {
                  calcMinCheckoutDate={calcMinCheckoutDate}
                  adults={adults}
                  setAdults={setAdults}
-                 children={children}
-                 setChildren={setChildren}
+                 noOfChildren={noOfChildren}
+                 setNoOfChildren={setNoOfChildren}
                  isBooked={room.isBooked}
                  handleBookNow={handleBookNow}
                 />
