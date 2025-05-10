@@ -53,8 +53,12 @@ export async function POST(req: Request) {
      }
 
      return NextResponse.json(data, {status: 200, statusText: "Successful"});
-   } catch (error: any) {
-      console.log("Error Updating", error);
-      return new NextResponse("Unable to review", {status: 400});
-   }
+   } catch (error: unknown) {
+  if (error instanceof Error) {
+    console.log("POST Error Updating:", error.message);
+  } else {
+    console.log("POST Error: Unknown error");
+  }
+  return new NextResponse("Unable to review", {status: 400});
+}
 };
