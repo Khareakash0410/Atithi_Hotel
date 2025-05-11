@@ -15,12 +15,13 @@ import axios from "axios";
 import { getStripe } from "@/libs/stripe";
 import RoomReview from "@/components/RoomReview/RoomReview";
 
+type Props = {
+  params: { slug: string };
+};
 
-const RoomDetails = (props: {params: {slug: string}}) => {
 
- const {
-    params: {slug},
- } = props;
+
+const RoomDetails = ({ params: { slug } }: Props) => {
 
  const [checkinDate, setCheckinDate] = useState<Date | null>(null);
  const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
@@ -29,7 +30,8 @@ const RoomDetails = (props: {params: {slug: string}}) => {
 
  const fetchRoom = async () => getroom(slug);
  
- const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
+const { data: room, error, isLoading } = useSWR(slug ? [`/api/room/${slug}`, slug] : null, ([, slug]) => getroom(slug));
+
  
  if(error) throw new Error("Cannot fetch data");
  if(typeof room === "undefined" && !isLoading)  
