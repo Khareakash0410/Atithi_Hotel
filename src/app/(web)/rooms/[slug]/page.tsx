@@ -16,11 +16,9 @@ import { getStripe } from "@/libs/stripe";
 import RoomReview from "@/components/RoomReview/RoomReview";
 
 
-const RoomDetails = (props: {params: {slug: string}}) => {
+const RoomDetails = ({ params }: { params: { slug: string } }) => {
 
- const {
-    params: {slug},
- } = props;
+  const { slug } = params;
 
  const [checkinDate, setCheckinDate] = useState<Date | null>(null);
  const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
