@@ -29,7 +29,8 @@ const RoomDetails = (props: {params: {slug: string}}) => {
 
  const fetchRoom = async () => getroom(slug);
  
- const {data: room, error, isLoading} = useSWR("/api/room", fetchRoom);
+const { data: room, error, isLoading } = useSWR(['room', slug], fetchRoom);
+
  
  if(error) throw new Error("Cannot fetch data");
  if(typeof room === "undefined" && !isLoading)  
