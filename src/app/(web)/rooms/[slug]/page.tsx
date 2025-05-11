@@ -14,13 +14,13 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { getStripe } from "@/libs/stripe";
 import RoomReview from "@/components/RoomReview/RoomReview";
-import { useParams } from "next/navigation";
 
 
-const RoomDetails = () => {
+const RoomDetails = (props: {params: {slug: string}}) => {
 
- const params = useParams();
- const slug = params?.slug as string;
+ const {
+    params: {slug},
+ } = props;
 
  const [checkinDate, setCheckinDate] = useState<Date | null>(null);
  const [checkoutDate, setCheckoutDate] = useState<Date | null>(null);
